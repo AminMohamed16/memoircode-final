@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Accueil',
     'List_Evenment',
-    'login',
+    'sigin',
+
 ]
 
 MIDDLEWARE = [
