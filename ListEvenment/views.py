@@ -4,4 +4,4 @@ from django.shortcuts import render
 
 
 def List_Evenment(request):
-    return render(request, 'listevenment/listevenment.html')
+    return render(request, 'ListEvenment/ListEvenment.html')
