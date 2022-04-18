@@ -5,7 +5,7 @@ from folium import plugins
 # Create your views here.
 
 
-def accueil(request):
+def map(request):
     data = Data.objects.all()
     data_list = Data.objects.values_list('latitude', 'longitude')
 # , 'population'
@@ -17,4 +17,4 @@ def accueil(request):
     context = {
         'map1': map1
     }
-    return render(request, 'accueil/accueil.html', context)
+    return render(request, 'map/map.html', context)
