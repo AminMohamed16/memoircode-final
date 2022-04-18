@@ -1,4 +1,8 @@
+from typing import List
 from django.db import models
+from person.models import person
+from ListEvenment.models import Evenment
+
 import geocoder
 
 # Create your models here.
@@ -6,9 +10,12 @@ import geocoder
 
 class Data(models.Model):
     country = models.CharField(max_length=100, null=True)
-    population = models.PositiveIntegerField(null=True)
     latitude = models.FloatField(default=0)
     longitude = models.FloatField(default=0)
+    person=models.ForeignKey(person,null=True,on_delete=models.SET_NULL)
+    ListEvenment=models.ForeignKey(Evenment,null=True,on_delete=models.SET_NULL)
+
+
 
     class Meta:
         verbose_name_plural = 'Data'

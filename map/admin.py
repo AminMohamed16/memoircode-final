@@ -5,7 +5,7 @@ from .models import Data
 
 
 class DataAdmin(admin.ModelAdmin):
-    list_display = ('country', 'population', 'latitude', 'longitude')
+    list_display = ('country','person', 'latitude', 'longitude','ListEvenment')
 
 
 admin.site.register(Data, DataAdmin)

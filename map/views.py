@@ -8,8 +8,9 @@ from folium import plugins
 def map(request):
     data = Data.objects.all()
     data_list = Data.objects.values_list('latitude', 'longitude')
-# , 'population'
-    map1 = folium.Map(location=[36.203419999999994,1.2680696005416272], zoom_start=10)
+
+    map1 = folium.Map(location=[36.203419999999994,
+                      1.2680696005416272], zoom_start=10)
 
     plugins.HeatMap(data_list).add_to(map1)
     plugins.Fullscreen(position='topright').add_to(map1)
