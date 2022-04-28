@@ -31,16 +31,14 @@ class Evenment(models.Model):
     )
 
     nomevenment = models.CharField(max_length=100, null=True)
-    porte = models.CharField(max_length=100, null=True,
-                             choices=TypeIntervenant)
-    type_evenment = models.CharField(
-        max_length=100, null=True, choices=TYPE_EVENMENT)
-    Adresse = models.CharField(max_length=100, null=True)
-    Télephone = models.CharField(max_length=100, null=True)
-    # Email_Intervenant=models.CharField(max_length=100, null=True)
-    organisateur = models.CharField(
-        max_length=100, null=True, choices=organisateur)
-    # # person=
-
+    country=models.CharField(max_length=100, null=True)
+    porte = models.CharField(max_length=100, null=True,choices=TypeIntervenant)
+    type_evenment = models.CharField(max_length=100, null=True, choices=TYPE_EVENMENT)
+    Adresse_deEvent = models.CharField(max_length=100, null=True)
+    # Télephone = models.CharField(max_length=100, null=True)
+    Email_Intervenant=models.CharField(max_length=100, null=True)
+    organisateur = models.CharField(max_length=100, null=True, choices=organisateur)
+    Descriptinos = models.TextField(null=True)
+    date_creation = models.DateTimeField(null=True)
     def __str__(self):
         return self.nomevenment

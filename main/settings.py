@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'map',
     'ListEvenment',
+    'commendEvent',
     'person',
 
 ]

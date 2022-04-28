@@ -4,8 +4,10 @@ from .models import Evenment
 
 
 class EvenmentAdmin(admin.ModelAdmin):
-    list_display = ('nomevenment',  'porte', 'type_evenment','Adresse', 'organisateur','Télephone')
+    list_display = ('nomevenment', 'country', 'Descriptinos', 'date_creation', 'porte',
+                    'type_evenment', 'Adresse_deEvent', 'organisateur', 'Email_Intervenant')
 
 #  , 'Email_Intervenant'
+
 
 admin.site.register(Evenment, EvenmentAdmin)

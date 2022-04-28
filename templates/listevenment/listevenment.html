@@ -7,21 +7,78 @@
     {% endcomment %}
   </head>
   <body>
-    <div class="col-md-6">
-      <div class="card flex-md-row mb-4 box-shadow h-md-250">
-        <div class="card-body d-flex flex-column align-items-start">
-          <strong class="d-inline-block mb-2 text-success">Design</strong>
-          <h3 class="mb-0">
-            <a class="text-dark" href="#">Post title</a>
-          </h3>
-          <div class="mb-1 text-muted">Nov 11</div>
-          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="#">Continue reading</a>
-        </div>
-        <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20250%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1802dacac0b%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A13pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1802dacac0b%22%3E%3Crect%20width%3D%22200%22%20height%3D%22250%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2256.1805534362793%22%20y%3D%22130.66666679382325%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="width: 200px; height: 250px;">
-      </div>
-    </div>
+          <div class="card-body">
+          <h4 class="m-b-20 text-default">Mes evenment</h4>
+          <div class="profiletimeline">
+            {% comment %} {% endcomment %}
 
+            <div class="row">
+              <div class="card col-md-3">
+                <h2 class="m-t-10 text-info">
+                  Filtre<i
+                    class="pull-right mdi mdi-filter text-info text-right"
+                  ></i>
+                </h2>
+                <hr />
+                <div class="m-b-40">
+                  <h4 class="title">Filtre par Antenne</h4>
+                  <select class="form-control custom-select" id="antenna_filter">
+                    <option value="1" selected="">
+                      evenment Chlef (par type de evenment)
+                    </option>
+                    <option value="2">Antenne d'Oran</option>
+                    <option value="3">Antenne d'Annaba</option>
+                    <option value="4">Antenne de Constantine</option>
+                    <option value="5">Antenne de Tlemcen</option>
+                  </select>
+                  
+                  <select class="form-control custom-select" id="antenna_filter">
+                    <option value="1" selected="">
+                      evenment Chlef (par type de evenment)
+                    </option>
+                    <option value="2">Antenne d'Oran</option>
+                    <option value="3">Antenne d'Annaba</option>
+                    <option value="4">Antenne de Constantine</option>
+                    <option value="5">Antenne de Tlemcen</option>
+                  </select>
+                </div>
+              </div>
+              <div class="card col-md-9">
+                <div class="card-body">
+                  <div class="sl-item">
+                    <div class="sl-left">
+                      <img
+                        width="40"
+                        src="data:image/jpeg;base64,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"
+                        alt="user"
+                      />
+                    </div>
+                    <div class="sl-right">
+                      <div>
+                        <a href="#" class="link"
+                          ><!--title de l'evenment + la date --></a>
+                        <span class="sl-date"
+                          ><!--Hada l'evenment ch3al 3ando meli bda  --></span>
+                        <p class="text-mute m-t-10">
+                          <!--description de l'evenment -->
+                        </p>
+                        <div class="like-comm">
+                          <a
+                            href="https://portail.if-algerie.com/exams"
+                            class="btn btn-info m-r-10"
+                          >
+                            <i class="fa fa-share"></i> S'inscrire</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
   </body>
 </html>
 
