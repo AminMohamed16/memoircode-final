@@ -40,5 +40,6 @@ class Evenment(models.Model):
     organisateur = models.CharField(max_length=100, null=True, choices=organisateur)
     Descriptinos = models.TextField(null=True)
     date_creation = models.DateTimeField(null=True)
+    image=models.ImageField(upload_to='images', height_field=None, width_field=None, max_length=None)
     def __str__(self):
         return self.nomevenment
