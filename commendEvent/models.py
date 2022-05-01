@@ -1,6 +1,6 @@
 
 from django.db import models
-from person.models import person
+# from user.models import user
 from ListEvenment.models import Evenment
 from map.models import Data
 
@@ -16,7 +16,7 @@ class list_CommandEvent(models.Model):
         ('interwilaya', 'interwilaya')
     )
     porte = models.CharField(max_length=100, null=True,choices=TypeIntervenant)
-    person=models.ForeignKey(person,null=True,on_delete=models.SET_NULL)
+    # user=models.ForeignKey(user,null=True,on_delete=models.SET_NULL)
     ListEvenment=models.ForeignKey(Evenment,null=True,on_delete=models.SET_NULL)
     map=models.ForeignKey(Data,null=True,on_delete=models.SET_NULL)
 

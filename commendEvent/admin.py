@@ -4,8 +4,8 @@ from .models import list_CommandEvent
 
 
 class CommandEvent(admin.ModelAdmin):
-    list_display = ('porte', 'map', 'person', 'ListEvenment')
-# ,'map'
+    list_display = ('porte', 'map',  'ListEvenment')
+# ,'map''user',
 
 
 admin.site.register(list_CommandEvent, CommandEvent)
