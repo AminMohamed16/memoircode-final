@@ -32,7 +32,10 @@
   </head>
 
   <body>
+    {% block head%}
     {% include 'navbar/Navbar.html' %}
+    {% endblock %}
+
     {% comment %} Nav_utilisateur {% endcomment %}
     {% block content %} 
 

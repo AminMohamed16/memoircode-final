@@ -1,52 +1,36 @@
- {% extends 'Main.html' %} {% block content %}
-{% load humanize %}
+ {% extends 'Main.html' %} 
+ {% load humanize %}
 {% load static %}
 
-<!DOCTYPE html>
-<html>
-  
-  <body>
+ {% block content %}
+
     <div class="card-body">
         <h4 class="m-b-20 text-default">Mes evenment</h4>
+        
         <div class="profiletimeline">
             <div class="row">
-              <!--Debut de Filtre-->
-                <div class="card col-md-3">
-                    <h2 class="m-t-10 text-info">
-                      Filtre<i class="pull-right mdi mdi-filter text-info text-right"></i>
-                    </h2>
-                    <hr />
-                    <div class="m-b-40">
-                        <h4 class="title">Filtre par Antenne</h4>
-                        <select class="form-control custom-select" id="antenna_filter">
-                          <option value="1" selected="">
-                            evenment Chlef (par type de evenment)
-                          </option>
-                          <option value="2">national</option>
-                          <option value="3">international</option>
-                          <option value="4">wilaya</option>
-                          <option value="5">interwilaya</option>
-                        </select>
-                        <br/>
-                        <br/>
-                        <h4 class="title">Filtre par Type De Evenment</h4>
-                        <select class="form-control custom-select" id="antenna_filter">
-                          <option value="1" selected="">
-                            evenment Chlef (par type de evenment)
-                          </option>
-                          <option value="2">culturel</option>
-                          <option value="3">sport</option>
-                          <option value="4">religieux</option>
-                          <option value="5">scientifiques</option>
-                        </select>
-                    </div>
+              <!--Debut de Filtre-->            
+              <div class="card col-md-3">
+                <h2 class="">
+                    Filtre<i class="pull-right mdi mdi-filter text-info text-right"></i>
+                </h2>
+                <hr />
+                <br/>
+                <div>
+                  <h4 class="title">Filtre par Antenne</h4>
+                  <form method="get">
+                    {{myFilter.form}}
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
                 </div>
+            </div>                                   
+ 
               <!--Fine de Filtre-->
 
             <div class="card col-md-9">
             
-                                              {% for Evenment in Evenments %}
-                                              <div class="card">
+                    {% for Evenment in Evenments %}
+                  <div class="card">
                   <div class="card-body">
                               <div class="sl-item">
 
@@ -54,12 +38,12 @@
                                   
                                 <!--first-->
                                 <div class="rounded float-end" >
-                                    {% comment %} <img  width="70" src="{{Evenment.urlToimage}}" alt="Image name"> {% endcomment %}
-                                      <img src="data:image/jpeg;base64,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" 
-                                      width="300"
-                                      alt="..."> 
-                                </div>                                    <br/> 
+                                  {% if Evenment.image %}
+                                    <img  width="370" src="{{Evenment.image.url}}" alt="{{nomevenment}}">  
+                                  {% endif %}
 
+                                </div>                                   
+                                <br/> 
                                 <div class="sl-right">
                                   <div>
                                     <figure>
@@ -85,6 +69,10 @@
                         </div>
                         
                   </div>
+                  {% empty %}
+                  <div class="alert alert-danger" role="alert">
+                    <h3> pas d'element </h3>
+                  </div>
                   {% endfor %}
                 </div>
             </div>
@@ -93,8 +81,5 @@
       </div>
     </div>
 
-  </body>
-
-</html>
 
 {% endblock %}
