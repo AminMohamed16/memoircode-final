@@ -22,6 +22,5 @@ def page_Evenment(request):
         'Evenments': Evenments
     }
 
-
-    return render(request, 'ListEvenment/page_Evenment.html',context)
+    return render(request, 'ListEvenment/page_Evenment.html', context)
     # return HttpResponse("page_event")

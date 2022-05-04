@@ -2,10 +2,13 @@
 
 
 {% block content %}
-    <h1>Sigin</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-    </form>
+    <center>
+        <h1>Sigin</h1>
+        <form method="post">
+            {% csrf_token %}           
 
+            {{form.as_p}}
+            <button type="submit" class="btn btn-primary">Sigin</button>
+        </form>
+    </center>
 {% endblock %}
