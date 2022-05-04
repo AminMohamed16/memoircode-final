@@ -22,8 +22,8 @@ def List_Evenment(request, *args, **kwargs):
     return render(request, 'ListEvenment/ListEvenment.html', context)
 
 
-def page_Evenment(request, pk):
-    Detials = Evenment.objects.get(id=pk)
+def page_Evenment(request):
+    Detials = Evenment.objects.get(id=1)
     context = {
         'nomevenments': Detials.nomevenment,
         'date_creations': Detials.date_creation,
@@ -33,4 +33,4 @@ def page_Evenment(request, pk):
     }
 
     return render(request, 'ListEvenment/page_Evenment.html', context)
-    # return HttpResponse("page_event")
+    # return HttpResponse("page_event")=pk, pk
