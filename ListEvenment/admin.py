@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Evenment
+from .models import Evenment,Comment
 # Register your models here.
 
 
@@ -11,3 +11,5 @@ class EvenmentAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Evenment, EvenmentAdmin)
+
+admin.site.register(Comment)

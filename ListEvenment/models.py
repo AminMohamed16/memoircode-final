@@ -3,7 +3,6 @@ from django.db import models
 from django.utils import timezone
 # Create your models here.
 from distutils.command.upload import upload
-from django.db import models
 
 # Create your models here.
 
@@ -49,6 +48,23 @@ class Evenment(models.Model):
     class Meta:
         verbose_name = ("Evenment")
         verbose_name_plural = ("Evenment")
-
+        ordering=('-date_creation_evenment',)
     def __str__(self):
         return self.nomevenment
+
+
+class Comment(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    content = models.TextField(max_length=50)
+    Comment_date = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=False)
+    Evenment = models.ForeignKey(Evenment, on_delete=models.CASCADE, related_name='comments')
+
+    def __str__(self):
+        return ' {} Comment for :{}.'.format(self.name,self.Evenment)
+
+    class Meta:
+        verbose_name = ("Comment")
+        verbose_name_plural = ("Comment")
+        ordering=('-Comment_date',)
