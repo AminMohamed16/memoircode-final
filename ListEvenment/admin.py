@@ -4,7 +4,7 @@ from .models import Evenment
 
 
 class EvenmentAdmin(admin.ModelAdmin):
-    list_display = ('nomevenment', 'image', 'country', 'Descriptinos', 'date_creation', 'porte',
+    list_display = ('nomevenment', 'image', 'country', 'Descriptinos', 'date_fine_evenment', 'date_creation_evenment', 'porte',
                     'type_evenment', 'Adresse_deEvent', 'organisateur', 'Email_Intervenant')
 
 #  , 'Email_Intervenant'

@@ -17,7 +17,9 @@
                   <div class="carousel-inner">
                     
                       <div class="carousel-item active">
-                            <img  width="370" src="{{Detials.image}}" alt="{{nomevenment}}">  
+                      
+                            <img width='1000' height='500' src="{{Detials.image.url}}" alt="{{nomevenment}}">  
+                        
                       </div>
                   </div>
                 </div>
@@ -31,11 +33,10 @@
 
                   <figure>
                     <blockquote class="blockquote">
-                      {% comment %} {% if Evenment.author.image %} {% endcomment %}
-                      <a href="#" class="link">{{nomevenments}}</a>
+                      <mark> <a href="#" class="link">{{Detials.nomevenment}}</a></mark>
                     </blockquote>
                     <figcaption class="blockquote-footer">
-                      <span class="sl-date">date:{{date_creations|timesince}}</span>
+                      <span class="sl-date">date:{{Detials.date_creation_evenment|timesince}}</span>
                     </figcaption>
                   </figure>
                     <!--END Nome & Date -->
@@ -46,7 +47,7 @@
                 <div>
                     <h3>Descriptinos</h3>
                     <br/> 
-                        {{Descriptinos}}
+                        {{Detials.Descriptinos}}
                 </div>
                 <!--END DESCRIPTINOS-->
 
@@ -54,14 +55,7 @@
 
                 <!--Les information de l'evenment-->
                 <div>
-                <h3>Location</h3>
-                    <p>remaining essentially unchanged. It was popularised in the 1960s </p>
-                    
-                    <p>country{{country.country}}</p>
-                    <p>Place</p>
-                    
-
-              </div>
+                </div>
               <!-- END  information de l'evenment-->
 
                 <!--MAP-->
@@ -74,12 +68,12 @@
 
           </div>
     </div>
-<!--Debut de Filtre-->
+<!--Debut de bar d'information-->
 <div class="card col-md-3">
   <h2 class="m-t-10 text-info">
+    <br/>
     <blockquote class="blockquote">
-      <br/>
-      <a href="#" class="link"><mark>What is Lorem Ipsum?</mark>{{Evenment.nomevenment}}</a>
+      <a href="#" class="link">{{Detials.nomevenment}}</a>
     </blockquote>
   </h2>
   <br/>
@@ -88,12 +82,16 @@
       <br/>
   <hr/>
     <figcaption class="blockquote-footer">
-      <span class="sl-date">date debut:2022-05-01{{Evenment.date_creation|timesince}}</span>
+      <span class="sl-date">date_creation_evenment:{{Detials.date_creation_evenment|timesince}}</span>
     </figcaption>
     <figcaption class="blockquote-footer">
-      <span class="sl-date">date Finall:2022-05-01{{Evenment.date_creation|timesince}}</span>
-    </figcaption>    
-  <hr />
+      <span class="sl-date">date_fine_evenment:{{Detials.date_fine_evenment}}</span>
+    </figcaption> 
+    <figcaption class="blockquote-footer">
+      <span class="sl-date">country:{{Detials.country}}</span>
+
+    </figcaption>  
+    <hr />
   <div class="d-grid gap-2">
     <button class=" btn btn-info m-r-10 btn-primary" type="button"><i class="bi bi-plus-square"></i> S'inscrire</button>
   </div>
@@ -127,11 +125,10 @@
     <iframe src="https://maps.google.com/maps?q=Chlef&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
     style="border:0" allowfullscreen></iframe>
 </div>
-
 <!--Google Maps-->
 </div>
 
-<!--Fine de Filtre-->
+<!--Fine de bar d'information-->
 
           
     </div>

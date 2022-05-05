@@ -1,6 +1,6 @@
 
 from multiprocessing import context
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from .models import Evenment
 
 from django.http import HttpResponse
@@ -22,15 +22,11 @@ def List_Evenment(request, *args, **kwargs):
     return render(request, 'ListEvenment/ListEvenment.html', context)
 
 
-def page_Evenment(request):
-    Detials = Evenment.objects.get(id=1)
+def page_Evenment(request, id):
+    Detials = get_object_or_404(Evenment,pk=id)
     context = {
-        'nomevenments': Detials.nomevenment,
-        'date_creations': Detials.date_creation,
-        'Descriptinos': Detials.Descriptinos,
-        'images': Detials.image,
-        'Evenments': Detials
+        'Evenments': Detials,
+        'Detials': Detials
     }
-
-    return render(request, 'ListEvenment/page_Evenment.html', context)
-    # return HttpResponse("page_event")=pk, pk
+    return render(request, 'ListEvenment/page_Evenment.html', {'Detials': Detials})
+    # return HttpResponse("page_event")

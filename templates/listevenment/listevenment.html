@@ -18,6 +18,7 @@
                 <br/>
                 <div>
                   <h4 class="title">Filtre par Antenne</h4>
+                  
                   <form method="get">
                     {{myFilter.form}}
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -39,7 +40,7 @@
                                 <!--first-->
                                 <div class="rounded float-end" >
                                   {% if Evenment.image %}
-                                    <img  width="370" src="{{Evenment.image.url}}" alt="{{nomevenment}}">  
+                                    <img  width="370" height='200' src="{{Evenment.image.url}}" alt="{{nomevenment}}">  
                                   {% endif %}
 
                                 </div>                                   
@@ -51,13 +52,13 @@
                                         <a href="#" class="link">{{Evenment.nomevenment}}</a>
                                       </blockquote>
                                       <figcaption class="blockquote-footer">
-                                        <span class="sl-date">{{Evenment.date_creation|timesince}}</span>
+                                        <span class="sl-date">{{Evenment.date_creation_evenment|timesince}}</span>
                                       </figcaption>
                                     </figure>
                                     <br/> 
                                       <p class="text-mute m-t-10  text-justify">{{Evenment.Descriptinos|truncatechars:150}}</p>
                                       <div class="like-comm">
-                                        <a href="/List_Evenment/page_Evenment" class="btn btn-info m-r-10">
+                                        <a href="{% url 'page_Evenment' Evenment.id %}" class="btn btn-info m-r-10">
                                           <i class="fa fa-share"></i>
                                           Show detail{{Evenment.href}}
                                         </a>

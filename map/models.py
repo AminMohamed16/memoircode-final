@@ -1,7 +1,7 @@
 from typing import List
 from django.db import models
 # from person.models import person
-# from ListEvenment.models import Evenment
+from ListEvenment.models import Evenment
 
 import geocoder
 
@@ -13,7 +13,7 @@ class Data(models.Model):
     latitude = models.FloatField(default=0)
     longitude = models.FloatField(default=0)
     # person=models.ForeignKey(person,null=True,on_delete=models.SET_NULL)
-    # ListEvenment=models.ForeignKey(Evenment,null=True,on_delete=models.SET_NULL)
+    ListEvenment=models.ForeignKey(Evenment,null=True,on_delete=models.SET_NULL)
 
 
 

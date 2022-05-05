@@ -5,8 +5,8 @@ from .models import Data
 
 
 class DataAdmin(admin.ModelAdmin):
-    list_display = ('country', 'latitude', 'longitude')
+    list_display = ('country', 'ListEvenment', 'latitude', 'longitude')
 
 
-# ,'ListEvenment','person'
+# ,'person'
 admin.site.register(Data, DataAdmin)

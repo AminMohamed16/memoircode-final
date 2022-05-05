@@ -5,7 +5,6 @@ from django.utils import timezone
 from distutils.command.upload import upload
 from django.db import models
 
-
 # Create your models here.
 
 # Evenment_list MODEL
@@ -44,9 +43,9 @@ class Evenment(models.Model):
     Email_Intervenant=models.CharField(max_length=100, null=True)
     organisateur = models.CharField(max_length=100, null=True, choices=organisateur)
     Descriptinos = models.TextField(null=True)
-    date_creation = models.DateTimeField(default=timezone.now)
+    date_creation_evenment = models.DateTimeField(default=timezone.now)
+    date_fine_evenment = models.DateTimeField(default=timezone.now)
     image=models.ImageField(blank=True,null=True)
-
     class Meta:
         verbose_name = ("Evenment")
         verbose_name_plural = ("Evenment")
