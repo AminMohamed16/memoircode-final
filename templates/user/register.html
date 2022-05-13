@@ -1,0 +1,17 @@
+{% extends 'Main.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="border p-5 mb-1">
+    <legend class="border-bottom pb-2 mb-3">Register</legend>
+        <form method="POST">
+            {% csrf_token %}
+            {{form|crispy}}
+            <input class="btn btn-secondary " type="submit" value="Register">
+        </form>
+        <div class="border-top mt-4 pt-2">
+        <small>Si vous avez déjà un compte, vous pouvez <a href="{% url 'login' %}">Login</a></small>
+    </div>        
+</div>
+
+{% endblock %}

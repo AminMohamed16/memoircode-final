@@ -8,8 +8,11 @@ urlpatterns = [
     path('', include('map.urls')),
     path('List_Evenment/', include('ListEvenment.urls')),
     path('page_Evenment/', include('ListEvenment.urls')),
+    path('', include('user.urls')),
+
+    
     # path('commendEvent/', include('commendEvent.urls')),
-    # path('', include('users.urls')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # if settings.DEBUG:

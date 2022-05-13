@@ -56,13 +56,13 @@ class Evenment(models.Model):
 class Comment(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField()
-    content = models.TextField(max_length=50)
+    content = models.TextField(max_length=500)
     Comment_date = models.DateTimeField(auto_now_add=True)
-    active = models.BooleanField(default=False)
-    Evenment = models.ForeignKey(Evenment, on_delete=models.CASCADE, related_name='comments')
+    # active = models.BooleanField(default=False,null=True)
+    Evenment= models.ForeignKey(Evenment, on_delete=models.CASCADE, related_name='comments')
 
     def __str__(self):
-        return ' {} Comment for :{}.'.format(self.name,self.Evenment)
+        return 'علق {} على {}.'.format(self.name, self.Evenment)
 
     class Meta:
         verbose_name = ("Comment")

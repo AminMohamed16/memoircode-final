@@ -1,0 +1,21 @@
+{% extends 'Main.html' %}  
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="border p-4 mb-5">
+    <legend class="border-bottom pb-1 mb-3">Vous avez été déconnecté avec succès</legend>
+    <a href="{% url 'login' %}"> Click Login Ici!</a>
+
+</div>
+{% endblock content %}
+
+{% comment %}
+{% block content %}
+<div class="border p-5 mb-1">
+    <legend class="border-bottom pb-2 mb-3">Login</legend>
+    <a href="#">Register un outre fois</a>
+</div>        
+{% url 'register' %} 
+
+{% endblock %}{% endcomment %}

@@ -1,0 +1,29 @@
+{% extends 'Main.html' %}  
+
+{% block content %}
+
+
+
+
+<div class="row mb-5">
+    <div class="col-md">
+        <h3 class="border-bottom pb-3 mb-4">عدد التدوينات التي دونتها</h3>
+        <h4 class="bg-secondary text-center p-4 text-light">
+            {{Evenments.count}}
+        </h4>
+
+        <h3 class="border-bottom mb-4 pb-3 mt-5">تدويناتي</h3>
+        {% for Evenment in Evenments %}
+        <ul class="pr-2">
+            <a class="text-dark" href=" ">{{Evenments.title}}</a>
+        </ul>
+        {% empty %}
+        <h4 class="text-center mb-5">لا يوجد تدوينات</h4>
+        {% endfor %}
+
+        {% comment %} {% include 'blog/pagination.html' with page=post_list %} {% endcomment %}
+    </div>
+</div>
+
+{% endblock %}
+{% comment %} {% url 'detail' post.id %}   {% endcomment %}
