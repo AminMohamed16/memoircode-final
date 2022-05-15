@@ -1,28 +1,29 @@
 
-from turtle import title
 from django.shortcuts import redirect, render
 from django.contrib import messages
-from .forms import UserCreationForm, LoginForm
+from .forms import UserCreationForm, LoginForm, UserUpdateForm, ProfilUpdateForm
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
+
 
 def register(request):
     if request.method == 'POST':
-        forms = UserCreationForm(request.POST)
-        if forms.is_valid():
-            new_user = forms.save(commit=False)
-            username = forms.cleaned_data['username']
-            new_user.set_password(forms.cleaned_data['password1'])
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            new_user = form.save(commit=False)
+            # username = form.cleaned_data['username']
+            new_user.set_password(form.cleaned_data['password'])
             new_user.save()
             # messages.success(
-            #    request, 'Inscription terminée avec {new_user} success'.format(username))
+            #    request, 'تهانينا {} لقد تمت عملية التسجيل بنجاح.'.format(username))
             messages.success(
-                request, f'Inscription terminée avec {new_user} success ')
-            return redirect('List_Evenment')
+                request, f'Inscription terminée avec {new_user} success.')
+            return redirect('login')
     else:
-        forms = UserCreationForm()
+        form = UserCreationForm()
     return render(request, 'user/register.html', {
         'title': 'register',
-        'form': forms,
+        'form': form,
     })
 
 
@@ -33,7 +34,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('List_Evenment')
+            return redirect('profile')
         else:
             messages.warning(
                 request, 'Il y a une erreur dans le nom d\'utilisateur ou le mot de passe.')
@@ -45,13 +46,40 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    return render(request, 'user/logout.html', {
-        'title': 'logout'
-    })
+    context = {
+        'title': 'logout',
+    }
+    return render(request, 'user/logout.html', context)
 
 
+@login_required(login_url='login')
 def profile(request):
-    return render(request, 'user/profile/profile.html', {
+    context = {
         'title': 'profile',
-    })
+    }
+    return render(request, 'user/profile/profile.html', context)
 
+
+
+@login_required(login_url='login')
+def profile_update(request):
+    if request.method == 'POST':
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        profile_form = ProfilUpdateForm(
+            request.POST, request.FILES, instance=request.user.profile)
+        if user_form.is_valid and profile_form.is_valid:
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'تم تحديث الملف الشخصي.')
+            return redirect('profile')
+    else:
+        user_form = UserUpdateForm(instance=request.user)
+        profile_form = ProfilUpdateForm(instance=request.user.profile)
+
+    context = {
+        'title': 'edit profile page',
+        'user_form': user_form,
+        'profile_form': profile_form,
+    }
+
+    return render(request, 'user/profile/profile_update.html', context)

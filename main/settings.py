@@ -39,13 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    # Tim fonction app 
+    # Tim fonction app
     'django.contrib.humanize',
-    
+
     # Declarations des application
     'map',
     'ListEvenment',
     'commendEvent',
+    'user',
     # 'users',
 
     # Filters
@@ -142,5 +143,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CRISPY_TEMPLATE_PACK ='bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'List_Evenment'

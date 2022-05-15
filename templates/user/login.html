@@ -3,6 +3,13 @@
 
 {% block content %}
 <div class="border p-5 mb-1">
+    {% comment %} {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}}">
+        {{message}}
+    </div>
+    {% endfor %}
+    {% endif %}  {% endcomment %}
     <legend class="border-bottom pb-2 mb-3">Login</legend>
         <form method="POST">
             {% csrf_token %}
