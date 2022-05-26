@@ -1,6 +1,9 @@
 from django import forms
 from django.contrib.auth.models import User
 from .models import Profile
+# from ListEvenment.models import Comment
+from django import forms
+
 # from .models import Profile
 
 
@@ -15,7 +18,8 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username','first_name','last_name', 'email','password', 'Confermpassword')
+        fields = ('username', 'first_name', 'last_name',
+                  'email', 'password', 'Confermpassword')
 
     def clean_Confermpassword(self):
         cd = self.cleaned_data

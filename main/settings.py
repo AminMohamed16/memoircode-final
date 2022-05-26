@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     # Declarations des application
     'map',
     'ListEvenment',
-    'commendEvent',
     'user',
     # 'users',
 

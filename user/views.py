@@ -34,7 +34,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('profile')
+            return redirect('/')
         else:
             messages.warning(
                 request, 'Il y a une erreur dans le nom d\'utilisateur ou le mot de passe.')
@@ -58,7 +58,6 @@ def profile(request):
         'title': 'profile',
     }
     return render(request, 'user/profile/profile.html', context)
-
 
 
 @login_required(login_url='login')
