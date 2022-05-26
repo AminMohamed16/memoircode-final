@@ -17,9 +17,11 @@
                   <div class="carousel-inner">
                     
                       <div class="carousel-item active">
-                      
+                          {% if Detials.image %}
                             <img width='1000' height='500' src="{{Detials.image.url}}" alt="{{nomevenment}}">  
-                        
+                          {% else %}
+                            <img width='1000' height='500' src="default.jpg" alt="{{nomevenment}}">
+                          {% endif %}
                       </div>
                   </div>
                 </div>
@@ -66,13 +68,12 @@
                 <br/>
               <!-- Debut de Code Comments-->
 
+
               <h2 class="border-bottom">Les Commentair ({{comment.count}})</h2>
               
                   {% for comment in comments %}
                     <div class="card">
-                      <div class="card-header">
-                        {{comment.name}}
-                      </div>
+                      
                       <div class="card-body">
                         <blockquote class="blockquote mb-0">
                           <p>{{comment.content}}</p>
@@ -95,7 +96,8 @@
                           {{comment_form|crispy}}
                           <button class="btn btn-outline-success " type="submit">Send</button>
                         </form>
-                  </div>
+                  </div> 
+                  
               <!-- Fine code Comments-->
 
                 <!--MAP-->

@@ -1,9 +1,10 @@
 
 from multiprocessing import context
 from django.shortcuts import get_object_or_404, render, redirect
-from .models import Evenment, Comment
+from .models import Evenment
+# from .views import PostCreateForm
+# from django.views.generic import CreateView
 # comments Form
-from .forms import NewComment
 # Filter
 from .filters import Evenment_filter
 # Create your views here.
@@ -24,33 +25,31 @@ def List_Evenment(request, *args, **kwargs):
 
 def page_Evenment(request, id):
     Detials = get_object_or_404(Evenment, pk=id)
-    comments = Detials.comments.filter()
-    comment_from = NewComment()
-    # new_comment = None      active=True
     context = {
 
         'Evenments': Detials,
         'Detials': Detials,
-        'comments': comments,
-        'comment_form': comment_from,
     }
-    # teb3ath les donne men formulair ll base de donnee
-    # if request.method == 'POST':
-    #     comment_from = NewComment(data=request.POST)
-    #     if comment_from.is_valid():
-    #         new_comment = comment_from.save(commit=False)
-    #         new_comment.Detials = Detials
-    #         new_comment.save()
-    #         comment_from = NewComment()
-    #     else:
-    #         comment_from = NewComment()
 
     return render(request, 'ListEvenment/page_Evenment.html', context)
 
 
 def mes_evenment(request):
-    Evenments = Evenment.objects.filter(author= request.user)
+    Evenments = Evenment.objects.filter(author=request.user)
     return render(request, 'ListEvenment/mes_evenment.html', {
         'title': 'mes_evenment',
-        'Evenments':Evenments,
+        'Evenments': Evenments,
     })
+
+
+# class Creatnew_evenment(CreateView):
+
+#     model = Evenment
+#     fields = ['nomevenment', 'country', 'porte', 'type_evenment', 'organisateur',
+#               'Descriptinos', 'date_creation_evenment', 'date_fine_evenment', 'image']
+#     template_name = 'ListEvenment/new_post.html'
+#     # form_class = PostCreateForm
+
+#     def form_valid(self, form):
+#         form.instance.author = self.request.user
+#         return super().form_valid(form)
