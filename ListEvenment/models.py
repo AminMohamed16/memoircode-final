@@ -2,14 +2,14 @@ from time import timezone
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
+
 # from map.models import Data
-# Create your models here.
 # from distutils.command.upload import upload
 # from user.models import User
-# Create your models here.
-
 # Evenment_list MODEL
 
+
+# Create your models here.
 
 class Evenment(models.Model):
 
@@ -38,8 +38,8 @@ class Evenment(models.Model):
     )
 
     nomevenment = models.CharField(max_length=100, null=True)
-    Acountry = models.CharField(max_length=100, null=True)
-    # Acountry = models.ForeignKey(Data, null=True, on_delete=models.SET_NULL)
+    # country = models.CharField(max_length=100, null=True)
+    # ville = models.ForeignKey(Data,on_delete=models.CASCADE)
     porte = models.CharField(max_length=100, null=True,
                              choices=TypeIntervenant)
     type_evenment = models.CharField(
@@ -59,8 +59,9 @@ class Evenment(models.Model):
         verbose_name_plural = ("Evenment")
         ordering = ('-date_creation_evenment',)
 
-    # def get_absolute_url(self):
-    #     return reverse('page_Evenment', args=[self.pk])
-
     def __str__(self):
         return self.nomevenment
+
+    def get_absolute_url(self):
+        # return reverse('page_Evenment', args=(str(self.id)))
+        return reverse('List_Evenment')

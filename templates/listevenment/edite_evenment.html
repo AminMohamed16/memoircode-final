@@ -1,0 +1,17 @@
+{% extends 'Main.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Edit Evenment {% endblock %}
+
+{% block content %}
+    
+    <div class="border p-5 mb-1">
+        <legend class="border-bottom pb-2 mb-3">Edit Evenment</legend>
+            <form method="POST">
+                {% csrf_token %}
+                {{form|crispy}}
+                <input class="btn btn-secondary " type="submit" value="Edit Evenment">
+            </form>
+                <hr/>    
+    </div>
+
+{% endblock %}

@@ -1,14 +1,14 @@
 
-from multiprocessing import context
-from django.shortcuts import get_object_or_404, render, redirect
+from pdb import post_mortem
+from django.shortcuts import get_object_or_404, render
 from .models import Evenment
+from ListEvenment.views import Evenment
 # from .views import PostCreateForm
-# from django.views.generic import CreateView
-# comments Form
+from django.views.generic import CreateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 # Filter
 from .filters import Evenment_filter
 # Create your views here.
-from ListEvenment.views import Evenment
 
 
 def List_Evenment(request, *args, **kwargs):
@@ -42,14 +42,30 @@ def mes_evenment(request):
     })
 
 
-# class Creatnew_evenment(CreateView):
+class Creatnew_evenment(LoginRequiredMixin, CreateView):
 
-#     model = Evenment
-#     fields = ['nomevenment', 'country', 'porte', 'type_evenment', 'organisateur',
-#               'Descriptinos', 'date_creation_evenment', 'date_fine_evenment', 'image']
-#     template_name = 'ListEvenment/new_post.html'
-#     # form_class = PostCreateForm
+    model = Evenment
+    template_name = 'ListEvenment/add_evenment.html'
+    fields = '__all__'
 
-#     def form_valid(self, form):
-#         form.instance.author = self.request.user
-#         return super().form_valid(form)
+    def form_invalid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
+class edit_evenment(UpdateView):
+    # UserPassesTestMixin, LoginRequiredMixin,
+    model = Evenment
+    template_name = 'ListEvenment/edite_evenment.html'
+    fields = '__all__'
+
+    # def form_invalid(self, form):
+    #     form.instance.author = self.request.user
+    #     return super().form_valid(form)
+
+    # def test_func(self):
+    #     post = self.get_object()
+    #     if self.request.user == post.author:
+    #         return True
+    #     else:
+    #         return False

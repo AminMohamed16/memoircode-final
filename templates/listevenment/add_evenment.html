@@ -1,5 +1,6 @@
-{% comment %} {% extends 'Main.html' %}
+{% extends 'Main.html' %}
 {% load crispy_forms_tags %}
+{% block title %} Create A New Evenment {% endblock %}
 
 {% block content %}
     
@@ -10,7 +11,7 @@
                 {{form|crispy}}
                 <input class="btn btn-secondary " type="submit" value="Add Evenment">
             </form>
-                    
+                <hr/>    
     </div>
 
-{% endblock %} {% endcomment %}
+{% endblock %}

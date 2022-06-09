@@ -1,6 +1,7 @@
  {% extends 'Main.html' %} 
  {% load humanize %}
 {% load crispy_forms_tags %}
+{% comment %} {% block title %} List Des Evenment {% endblock %} {% endcomment %}
 
  {% block content %}
 
@@ -58,17 +59,21 @@
                                     <br/> 
                                       <p class="text-mute m-t-10  text-justify">{{Evenment.Descriptinos|truncatechars:150}}</p>
                                       <div class="like-comm">
+                                        {% comment %} button Show detail {% endcomment %}
                                         <a href="{% url 'page_Evenment' Evenment.id %}" class="btn btn-info m-r-10">
                                           <i class="fa fa-share"></i>
                                           Show detail{{Evenment.href}}
+                                        </a>
+                                        {% comment %} button Edit {% endcomment %}
+                                        <a href="{% url 'edit_Evenment' Evenment.id %}" class="btn btn-info m-r-10">
+                                          <i class="fa fa-share"></i>
+                                          Edit{{Evenment.href}}
                                         </a>
                                       </div>
                                   </div>
                                 </div>
                             </div>
-                        
-                        </div>
-                        
+                        </div> 
                   </div>
                   {% empty %}
                   <div class="alert alert-danger" role="alert">
@@ -82,5 +87,5 @@
       </div>
     </div>
 
-
+<hr/>
 {% endblock %}
